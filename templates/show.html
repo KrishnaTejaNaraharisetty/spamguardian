@@ -56,30 +56,31 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">SpamGuardian</a>
-    </div>
+  <nav class="navbar navbar-dark bg-dark justify-content-center">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">SpamGuardian</a>
+      </div>
   </nav>
-
+  
   <!-- Show -->
   <div class="container">
-    <h3 class="mt-3">Email Spam Classifier's result shown below</h3>
-    <p>Thank you for using the application.</p>
-    <a href="/" class="btn btn-outline-success btn-go-back">Go Back</a>
+      <h3 class="mt-3">Email Spam Classifier's result shown below</h3>
+      <p>Thank you for using the application.</p>
+      <a href="/" class="btn btn-outline-success btn-go-back">Go Back</a>
   </div>
-
+  
   <!-- Result -->
   <div class="results">
-    {% if prediction==1 %}
-    <h1 class="prediction">Prediction: <span class='text-danger'>Gotcha! This is a SPAM message.</span></h1>
-    <img class="spam-image" src="{{ url_for('static', filename='spam.webp') }}" alt="SPAM Image">
-    {% elif prediction==0 %}
-    <h1 class="prediction">Prediction: <span class='text-success'>Great! This is NOT a spam message.</span></h1>
-    <img class="not-spam-image" src="{{ url_for('static', filename='not-spam.webp') }}" alt="Not a spam image">
-    {% endif %}
+      {% if prediction == 1 %}
+          <h1 class="prediction">Prediction: <span class='text-danger'>Gotcha! This is a SPAM message.</span></h1>
+          <img class="spam-image" src="{{ url_for('static', filename='spam.webp') }}" alt="SPAM Image">
+      {% elif prediction == 0 %}
+          <h1 class="prediction">Prediction: <span class='text-success'>Great! This is NOT a spam message.</span></h1>
+          <img class="not-spam-image" src="{{ url_for('static', filename='not-spam.webp') }}" alt="Not a spam image">
+      {% endif %}
   </div>
-
-</body>
+  
+  </body>
+  
 
 </html>

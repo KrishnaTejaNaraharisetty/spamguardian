@@ -1,106 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email Spam Classifier</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Classifier</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+          crossorigin="anonymous">
 
-    /* Centering the title */
-    .title-container {
-      text-align: center;
-      margin-top: 50px; /* Adjust margin as needed */
-    }
+          <style>
 
-    /* Custom styling for the title */
-    .title-container h1 {
-      font-size: 2.5rem; /* Custom font size */
-      font-weight: bold; /* Custom font weight */
-      color: #ffc107; /* Custom color */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Custom text shadow */
-    }
-    body {
-      background-color: #343a40; /* Dark grey background */
-      color: white; /* White text */
-    }
-
-    .navbar-brand {
-      font-size: 1.2rem;
-    }
-
-    .form-floating {
-      max-width: 600px; /* Limiting the width of the form */
-      margin: 0 auto; /* Centering the form */
-      padding-top: 50px;
-    }
-
-    .btn-primary {
-      background-color: #007bff; /* Primary button color */
-      border-color: #007bff;
-    }
-
-    .btn-primary:hover {
-      background-color: #0056b3; /* Darker shade on hover */
-      border-color: #0056b3;
-    }
-
-    .btn-primary:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5); /* Focus shadow color */
-    }
-
-    .container {
-      margin-top: 30px;
-    }
-
-    /* Styling for the contributors list */
-    footer.container {
-      margin-top: 50px;
-    }
-
-    footer.container h3 {
-      font-size: 1.2rem;
-    }
-
-    footer.container ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-
-    footer.container li {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    footer.container li:last-child {
-      margin-bottom: 0;
-    }
-  </style>
+            /* Centering the title */
+            .title-container {
+              text-align: center;
+              margin-top: 50px; /* Adjust margin as needed */
+            }
+        
+            /* Custom styling for the title */
+            .title-container h1 {
+              font-size: 2.5rem; /* Custom font size */
+              font-weight: bold; /* Custom font weight */
+              color: #ffc107; /* Custom color */
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Custom text shadow */
+            }
+            body {
+              background-color: #343a40; /* Dark grey background */
+              color: white; /* White text */
+            }
+        
+            .navbar-brand {
+              font-size: 1.2rem;
+            }
+        
+            .form-floating {
+              max-width: 600px; /* Limiting the width of the form */
+              margin: 0 auto; /* Centering the form */
+              padding-top: 50px;
+            }
+        
+            .btn-primary {
+              background-color: #007bff; /* Primary button color */
+              border-color: #007bff;
+            }
+        
+            .btn-primary:hover {
+              background-color: #0056b3; /* Darker shade on hover */
+              border-color: #0056b3;
+            }
+        
+            .btn-primary:focus {
+              box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5); /* Focus shadow color */
+            }
+        
+            .container {
+              margin-top: 30px;
+            }
+        
+            /* Styling for the contributors list */
+            footer.container {
+              margin-top: 50px;
+            }
+        
+            footer.container h3 {
+              font-size: 1.2rem;
+            }
+        
+            footer.container ul {
+              list-style-type: none;
+              padding: 0;
+              margin-top: 20px;
+            }
+        
+            footer.container li {
+              font-size: 1rem;
+              margin-bottom: 10px;
+            }
+        
+            footer.container li:last-child {
+              margin-bottom: 0;
+            }
+          </style>
+        </head>
+        
+        <body>
+        
 </head>
-
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">SpamGuardian</a>
+        <a class="navbar-brand" href="#">SpamGuardian</a>
     </div>
-  </nav>
+</nav>
 
-  <!-- Input form -->
-  <div class="container">
+<!-- Input form -->
+<div class="container">
     <h2 class="text-center mt-3">Type an Email here to check if it is Spam or Ham</h2>
     <form action="/" method="POST" class="form-floating">
-      <textarea class="form-control" placeholder="Write your email here.." id="email" name="email" style="height: 100px"></textarea>
-      <label for="email">Write your email here...</label>
-      <button class="w-100 btn btn-lg btn-primary mt-3">Submit</button>
+        <textarea class="form-control" placeholder="Write your email here.." id="email" name="email"
+                  style="height: 100px"></textarea>
+        <label for="email">Write your email here and choose the desired ML model to predict</label>
+        
+        <select class="form-select mt-3" name="model">
+            <option value="naive_bayes">Naive Bayes</option>
+            <option value="svm">Support Vector Machine</option>
+        </select>
+        
+        <button class="w-100 btn btn-lg btn-primary mt-3">Submit</button>
     </form>
-  </div>
-
+</div>
   <!-- Contributors -->
   <footer class="container text-center">
     <h3>ITCS 6150 Intelligent Systems Term Project | Professor Ali Sever</h3>
@@ -115,7 +125,11 @@
       <li>Sukhdev Kolli</li>
     </ul>
   </footer>
-
 </body>
-
 </html>
+
+
+
+
+
+
